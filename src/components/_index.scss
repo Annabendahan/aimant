@@ -29,10 +29,12 @@
         text-align: center;
        
         h3{
+            margin: 50px 0px;
             &:hover{
                 color: map-get($colors, red );
                 transition: color .8s ease-out;
                 cursor: pointer;
+               
 
             }
         }
@@ -58,7 +60,6 @@
     
     &__red{
         background: map-get($colors, red );
-        height: 100vh;
         h2{
             color: white;
         }
@@ -154,7 +155,26 @@
 }
 
 .cards{
-    width: 60%;
+    width: 80%;
+    @include breakpoint(s){
+        width: 70%;
+    }
+
+    @include breakpoint(m){
+        width: 65%;
+    }
+
+    @include breakpoint(l){
+        width: 55%;
+    }
+    @include breakpoint(xl){
+        width: 55%;
+    }
+    @include breakpoint(xxl){
+        width: 65%;
+    }
+ 
+ 
     margin:auto;
     
 }
@@ -170,15 +190,60 @@
 
   .grid-item {
     filter: grayscale(100%);
+    max-width: 350px;
+    @include breakpoint(xxl){
+        max-width: unset;
+    }
    
-    padding: 5px;
+   
+    padding: 2px;
     font-size: 30px;
     text-align: center;
 
     p{
         color: white;
+        
+    }
+    img{
+        height: 80px;
+        width: 80px;
+        @include breakpoint(xs){
+            height: 100px; 
+            width: 100px;
+        }
+        @include breakpoint(s){
+            height: 170px; 
+            width: 170px;
+        }
+
+        @include breakpoint(m){
+            height: 190px; 
+            width: 190px;
+        }
+
+        @include breakpoint(l){
+            height: 190px; 
+        }
+        @include breakpoint(xxl){
+            height: 300px; 
+            width: 300px;
+        }
     }
     &:hover{
         filter: grayscale(0%);
+        transition: filter .8s ease-out;
+
+       
     }
+    
+   
+    
+  }
+
+
+  .picture{
+      img{
+        flex: 0 0 80%;
+      }
+     
   }

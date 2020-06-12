@@ -79,8 +79,9 @@ class IndexPage extends Component {
 
 <div className="home__tabs">
           <h3 onClick={() => this.scrollTo("comediennes")}>Comédiennes</h3>
+
          <h3 onClick={() => this.scrollTo("comediens")}>Comédiens</h3>
-          <h3 onClick={() => this.scrollTo("auteurs")}>Auteurs et réalisateurs</h3>
+          <h3 onClick={() => this.scrollTo("auteurs")}>Auteurs <br/> et  réalisateurs</h3>
           <h3 onClick={() => this.scrollTo("metteurs")}>Metteurs en scène</h3>
 
         </div>
@@ -92,10 +93,37 @@ class IndexPage extends Component {
  
   <div className="cards">
   <h2> Comédiennes</h2>
+ 
 
   <div class="grid-container">
 
   {comediennes.map( c =>
+  <div className="grid-item" key={c.node.slug}>
+     <Link to={`/${c.node.path}`}>
+       <div className="picture">
+<img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} />
+</div>
+
+
+
+  <p>{c.node.title}</p> 
+  </Link>
+
+  </div>
+  )}
+</div>
+
+</div>
+</div>
+
+
+<div id="comediens" className="section section__white">
+<div className="cards">
+  <h2> Comédiens</h2>
+
+  <div class="grid-container">
+
+  {comediens.map( c =>
   <div className="grid-item" key={c.node.slug}>
      <Link to={`/${c.node.path}`}>
 <img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} />
@@ -109,44 +137,43 @@ class IndexPage extends Component {
 </div>
 
 
-<div id="comediens" className="section section__white">
-  <h2> Comédiens</h2>
-  {comediens.map(c =>
-  <div key={c.node.slug}>
- <Link to={`/${c.node.path}`}>
+<div id="auteurs" className="section section__red">
+  <div className="cards">
+  <h2> Auteurs et réalisateurs</h2>
+
+  <div class="grid-container">
+
+  {comediens.map( c =>
+  <div className="grid-item" key={c.node.slug}>
+     <Link to={`/${c.node.path}`}>
+<img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} />
   <p>{c.node.title}</p> 
-  
   </Link>
   </div>
   )}
 </div>
 
-
-<div id="auteurs" className="section section__red">
-  <h2> Auteurs et réalisateurs</h2>
-  {auteurs.map(c =>
-  <div key={c.node.slug}>
-  <Link to={`/${c.node.path}`}>
-  <p>{c.node.title}</p> 
-
-
-  </Link>
-  </div>
-  )}
+</div>
 </div>
 
 
 <div id="metteurs" className="section section__white">
+  <div className="cards">
   <h2> Metteurs en scène</h2>
-  {metteurs.map(c =>
-  <div key={c.node.slug}>
-  <Link to={`/${c.node.path}`}>
+
+  <div class="grid-container">
+
+  {comediens.map( c =>
+  <div className="grid-item" key={c.node.slug}>
+     <Link to={`/${c.node.path}`}>
+<img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} />
   <p>{c.node.title}</p> 
-
-
   </Link>
   </div>
   )}
+</div>
+
+</div>
 </div>
 
 

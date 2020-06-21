@@ -20,6 +20,8 @@ class ProfileTemplate extends Component {
                 className="desc"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
+
+              
             </div>
 
             

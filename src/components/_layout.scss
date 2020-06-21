@@ -268,7 +268,7 @@ h3 {
 
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 1.78316rem;
+  font-size: 2rem !important;
   line-height: 1.1;
 }
 h4 {
@@ -501,9 +501,16 @@ address {
 }
 b {
   font-weight: bold;
+  font-size: 1.2rem;
 }
 strong {
-  font-weight: bold;
+  font-weight: 900;
+  font-size: 1.2rem;
+  margin-bottom: 10px !important;
+  p{
+    margin-bottom: 10px !important;
+  }
+ 
 }
 dt {
   font-weight: bold;

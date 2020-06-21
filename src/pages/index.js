@@ -50,12 +50,12 @@ class IndexPage extends Component {
 
     console.log(data.allWordpressPost.edges.filter(p => p.node.categories[0] == 5 ))
 
-    const comediennes = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 5 )
-    const comediens = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 2 )
-    const auteurs = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 3 )
-    const metteurs = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 4 )
-    const infos = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 6 )
-    const apropos = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 7 )
+    const comediennes = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 2 )
+    const comediens = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 3 )
+    const auteurs = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 4 )
+    const metteurs = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 5 )
+    const infos = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 7 )
+    const apropos = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 6 )
 
 
     console.log(comediennes)
@@ -127,7 +127,7 @@ class IndexPage extends Component {
   <div className="grid-item" key={c.node.slug}>
      <Link to={`/${c.node.path}`}>
 <img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} />
-  <p>{c.node.title}</p> 
+  <p className="name">{c.node.title}</p> 
   </Link>
   </div>
   )}
@@ -143,7 +143,7 @@ class IndexPage extends Component {
 
   <div class="grid-container">
 
-  {comediens.map( c =>
+  {auteurs.map( c =>
   <div className="grid-item" key={c.node.slug}>
      <Link to={`/${c.node.path}`}>
 <img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} />
@@ -163,11 +163,11 @@ class IndexPage extends Component {
 
   <div class="grid-container">
 
-  {comediens.map( c =>
+  {metteurs.map( c =>
   <div className="grid-item" key={c.node.slug}>
      <Link to={`/${c.node.path}`}>
 <img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} />
-  <p>{c.node.title}</p> 
+  <p className="name">{c.node.title}</p> 
   </Link>
   </div>
   )}
@@ -235,8 +235,7 @@ export const pageQuery = graphql`
           categories
           path
          
-          
-       
+        
           content
          
         }

@@ -81,7 +81,7 @@
     display: flex;
     &:nth-child(1){ 
        
-        width: 20vw;
+        width: 20vw !important;
     }
     a{
         text-decoration: none !important;
@@ -93,8 +93,27 @@
 .wp-block-column{
    
     margin: 1rem;
+ 
+    @include breakpoint(s) {
+        margin-right: 50px;
+    }
+    @include breakpoint(l) {
+        margin-right: 80px;
+    }
+    p{
+        margin-bottom: 10px;
+    }
+    img{
+        width: 20vw;
+    }
+    figure{
+        width: 20vw;
+    }
 }
 
+.left-column{
+    width: 20vw;
+}
 
 .banner{
    
@@ -123,6 +142,9 @@
     }
 }
 
+.name{
+    color: map-get($colors, red) !important;
+}
 
 .apropos{
     width:50%;
@@ -205,6 +227,7 @@
         
     }
     img{
+        object-fit: cover;
         height: 80px;
         width: 80px;
         @include breakpoint(xs){

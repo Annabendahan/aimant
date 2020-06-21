@@ -61,13 +61,7 @@ export const pageQuery = graphql`
           
           categories
           path
-          _links {
-            wp_featuredmedia {
-              href
-              
-              embeddable
-            }
-          }
+         
           
        
           content

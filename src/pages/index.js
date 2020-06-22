@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import { Link } from "gatsby"
+import { graphql } from 'gatsby'
 import Img from "gatsby-image"
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';

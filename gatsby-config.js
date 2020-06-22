@@ -41,7 +41,7 @@ module.exports = {
             resolve: `gatsby-wordpress-inline-images`,
             options: {
               baseUrl: `http://aimantarwm.cluster021.hosting.ovh.net/`,
-              protocol: `https`
+              protocol: `http`
             }
           }
         ]

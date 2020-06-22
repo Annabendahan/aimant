@@ -16,10 +16,10 @@ class ProfileTemplate extends Component {
 
               
 
-              {/* <p
+              <p
                 className="desc"
                 dangerouslySetInnerHTML={{ __html: post.content }}
-              /> */}
+              />
 
 
             </div>

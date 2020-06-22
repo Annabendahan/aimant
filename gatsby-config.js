@@ -37,13 +37,13 @@ module.exports = {
         useACF: true,
         includedRoutes: ["**/posts", "**/pages"],
         plugins: [
-          // {
-          //   resolve: `gatsby-wordpress-inline-images`,
-          //   options: {
-          //     baseUrl: `http://aimantarwm.cluster021.hosting.ovh.net/`,
-          //     protocol: `https`
-          //   }
-          // }
+          {
+            resolve: `gatsby-wordpress-inline-images`,
+            options: {
+              baseUrl: `http://aimantarwm.cluster021.hosting.ovh.net/`,
+              protocol: `https`
+            }
+          }
         ]
       },
     },

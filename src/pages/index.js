@@ -101,7 +101,7 @@ class IndexPage extends Component {
   <div className="grid-item" key={c.node.slug}>
      <Link to={`/${c.node.path}`}>
        <div className="picture">
-<img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} />
+{/* <img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} /> */}
 </div>
 
 

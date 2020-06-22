@@ -116,14 +116,16 @@
 }
 
 .banner{
+    width: 100vw !important;
+    height: 27vh !important;
    
     
     img{
-        
-        width: 100%;
+        width: 100vw !important;
+       
         object-fit: cover;
         @include breakpoint(s){
-            height: 27vh;
+           
         }
         
     }

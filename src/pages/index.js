@@ -177,7 +177,7 @@ class IndexPage extends Component {
 </div> */}
 
 
-{/* <div id="contact" className="home__footer">
+<div id="contact" className="home__footer">
 
  <p
                 className="apropos"
@@ -189,7 +189,7 @@ class IndexPage extends Component {
                 className="infos"
                 dangerouslySetInnerHTML={{ __html: infos[0].node.content }}
               />
-</div> */} */}
+</div>
 
 
 <div className="instagram"><a href="https://www.instagram.com/agenceaimant/" target="blank" ><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -89,7 +89,7 @@ console.log(comediennes)
 
   {comediennes.map( c =>
   
-<Link key={c.uri} to={`/blog${c.uri}`}>
+<Link key={c.uri} to={`blog/${c.uri}`}>
   <p>{c.title}</p>  <p>{c.uri}</p> 
   </Link>
  

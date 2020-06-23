@@ -1,4 +1,5 @@
 const createPosts = require(`./gatsby/createPosts`)
+const createPages = require(`./gatsby/createPages`)
 
 
 exports.createPages = async ({ actions, graphql }) => {
@@ -7,6 +8,8 @@ exports.createPages = async ({ actions, graphql }) => {
     uploadsUrl: `https://aimant.art/wp-content/uploads/`,
   }
   await createPosts({ actions, graphql }, pluginOptions)
+  await createPages({ actions, graphql }, pluginOptions)
+
 
 
 }

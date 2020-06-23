@@ -151,8 +151,10 @@
 .apropos{
     width:50%;
     text-align: center;
+    color:white !important;
+        font-weight: bold !important;
     p{
-        color:white;
+        color:white !important;
         font-weight: bold !important;
     }
    
@@ -160,6 +162,7 @@
 
 .infos{
     text-align: center;
+    width: 180px;
 }
 
 .instagram{

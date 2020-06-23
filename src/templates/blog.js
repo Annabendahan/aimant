@@ -45,13 +45,13 @@ class IndexPage extends Component {
     
 
     const comediennes = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 2 )
-    // const comediens = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 3 )
-    // const auteurs = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 4 )
+    const comediens = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 3 )
+    const auteurs = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 4 )
     // const metteurs = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 5 )
-    // const infos = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 7 )
-    // const apropos = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 6 )
+    const infos = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 7 )
+    const apropos = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 6 )
 
-console.log(comediennes)
+console.log(data)
 
     
 
@@ -90,7 +90,7 @@ console.log(comediennes)
   {comediennes.map( c =>
   
 <Link key={c.uri} to={`blog/${c.uri}`}>
-  <p>{c.title}</p>  <p>{c.uri}</p> 
+  <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
   </Link>
  
   )}
@@ -99,21 +99,21 @@ console.log(comediennes)
 </div>
 </div>
 
-{/* 
+
 <div id="comediens" className="section section__white">
 <div className="cards">
   <h2> Comédiens</h2>
 
   <div class="grid-container">
 
+ 
   {comediens.map( c =>
-  <div className="grid-item" key={c.node.slug}>
-     <Link to={`/${c.node.path}`}>
-<img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} />
-  <p className="name">{c.node.title}</p> 
-  </Link>
-  </div>
-  )}
+  
+  <Link key={c.uri} to={`blog/${c.uri}`}>
+  <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
+    </Link>
+   
+    )}
 </div>
 
 </div>
@@ -127,18 +127,17 @@ console.log(comediennes)
   <div class="grid-container">
 
   {auteurs.map( c =>
-  <div className="grid-item" key={c.node.slug}>
-     <Link to={`/${c.node.path}`}>
-<img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} />
-  <p>{c.node.title}</p> 
-  </Link>
-  </div>
-  )}
+  
+  <Link key={c.uri} to={`blog/${c.uri}`}>
+  <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
+    </Link>
+   
+    )}
 </div>
 
 </div>
 </div>
-
+{/* 
 
 <div id="metteurs" className="section section__white">
   <div className="cards">
@@ -158,21 +157,36 @@ console.log(comediennes)
 
 </div>
 </div> */}
-{/* 
+
 
 <div id="contact" className="home__footer">
 
- <p
-                className="apropos"
-                dangerouslySetInnerHTML={{ __html: apropos[0].node.content }}
-              />
+
+
+{apropos.map( c =>
+  
+  
+    <p   className="apropos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
+ 
+   
+    )} 
+
 <img src={logo} alt="logo"/>
 
-<p
+
+{infos.map( c =>
+  
+  
+  <p   className="infos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
+
+ 
+  )} 
+
+{/* <p
                 className="infos"
                 dangerouslySetInnerHTML={{ __html: infos[0].node.content }}
-              />
-</div> */}
+              /> */}
+</div>
 
 
 <div className="instagram"><a href="https://www.instagram.com/agenceaimant/" target="blank" ><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -206,10 +220,12 @@ export default IndexPage
 export const query = graphql`
   query GET_ALL_POSTS {
     wpgraphql {
-      posts(first: 40) {
+      posts(first: 40, where: {orderby: {field: TITLE, order: ASC}}) {
         nodes{
             id
             title
+            content
+            excerpt
             uri
             categories {
               edges {

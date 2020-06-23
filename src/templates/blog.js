@@ -90,7 +90,7 @@ console.log(data)
 <div id="comediennes" className="section section__red">
  
   <div className="cards">
-  <h2> Comédiennes DERMAJ</h2>
+  <h2> Comédiennes </h2>
  
 
   <div class="grid-container">

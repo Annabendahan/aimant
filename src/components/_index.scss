@@ -60,6 +60,10 @@
     
     &__red{
         background: map-get($colors, red );
+        
+        p{
+            color: white !important;
+        }
         h2{
             color: white;
         }

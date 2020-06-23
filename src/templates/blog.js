@@ -1,18 +1,12 @@
-import React, {Component} from "react"
-import { Link } from "gatsby"
-import { graphql } from 'gatsby'
-import Img from "gatsby-image"
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import contentParser from 'gatsby-wpgraphql-inline-images';
-
-
-
+import React, { Component } from "react"
+import { graphql, navigate } from "gatsby"
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
 import logo from "../images/aimant_logo.png"
-import back from "../images/background-aimant1.png"
+import { Link } from "gatsby"
+
+import SEO from "../components/seo"
+
+
 
 
 class IndexPage extends Component {
@@ -47,20 +41,17 @@ class IndexPage extends Component {
 
   render(){
 
-    // const data = this.props.data
-    // console.log(data)
-    // console.log(data.allWordpressPost.edges)
+    const data = this.props.data
+    
 
-    // console.log(data.allWordpressPost.edges.filter(p => p.node.categories[0] == 5 ))
-
-    // const comediennes = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 2 )
+    const comediennes = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 2 )
     // const comediens = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 3 )
     // const auteurs = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 4 )
     // const metteurs = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 5 )
     // const infos = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 7 )
     // const apropos = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 6 )
 
-
+console.log(comediennes)
 
     
 
@@ -96,20 +87,13 @@ class IndexPage extends Component {
 
   <div class="grid-container">
 
-  {/* {comediennes.map( c =>
-  <div className="grid-item" key={c.node.slug}>
-     <Link to={`/${c.node.path}`}>
-       <div className="picture">
-<img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} />
-</div>
-
-
-
-  <p>{c.node.title}</p> 
+  {comediennes.map( c =>
+  
+<Link key={c.uri} to={`/blog/${c.uri}/`}>
+  <p>{c.title}</p>  <p>{c.uri}</p> 
   </Link>
-
-  </div>
-  )} */}
+ 
+  )}
 </div>
 
 </div>
@@ -217,18 +201,27 @@ class IndexPage extends Component {
 }
  
 
-
 export default IndexPage
 
-export const pageQuery = graphql`
-query GET_PAGES {
-  wpgraphql {
-    pages {
-      nodes {
-        uri
-        content
+export const query = graphql`
+  query GET_ALL_POSTS {
+    wpgraphql {
+      posts(first: 40) {
+        nodes{
+            id
+            title
+            uri
+            categories {
+              edges {
+                node {
+                  id
+                  categoryId
+                }
+              }
+            }
+           
+        }
       }
     }
   }
-}
 `

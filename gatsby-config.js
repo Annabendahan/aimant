@@ -15,36 +15,27 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sass`,
+    `gatsby-image`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-source-wordpress`,
+      resolve: "gatsby-source-graphql",
       options: {
-        /*
-         * The base URL of the WordPress site without the trailingslash and the protocol. This is required.
-         * Example : 'dev-gatbsyjswp.pantheonsite.io' or 'www.example-site.com'
-         */
-        baseUrl: `http://aimantarwm.cluster021.hosting.ovh.net/`,
-        
-        // The protocol. This can be http or https.
-        protocol: `http`,
-        // Indicates whether the site is hosted on wordpress.com.
-        // If false, then the assumption is made that the site is self hosted.
-        // If true, then the plugin will source its content on wordpress.com using the JSON REST API V2.
-        // If your site is hosted on wordpress.org, then set this to false.
-        hostingWPCOM: false,
-        // If useACF is true, then the source plugin will try to import the WordPress ACF Plugin contents.
-        // This feature is untested for sites hosted on WordPress.com
-        useACF: true,
-        includedRoutes: ["**/posts", "**/pages"],
-        plugins: [
-          {
-            resolve: `gatsby-wordpress-inline-images`,
-            options: {
-              baseUrl: `http://aimantarwm.cluster021.hosting.ovh.net/`,
-              protocol: `http`
-            }
-          }
-        ]
+        // Arbitrary name for the remote schema Query type
+        typeName: "WPGraphQL",
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: "wpgraphql",
+        // Url to query from
+        url: "http://aimantarwm.cluster021.hosting.ovh.net/graphql",
+      },
+    },
+    {
+      resolve: 'gatsby-wpgraphql-inline-images',
+      options: {
+        wordPressUrl: 'http://aimantarwm.cluster021.hosting.ovh.net/',
+        uploadsUrl: 'http://aimantarwm.cluster021.hosting.ovh.net/wp-content/uploads/',
+        processPostTypes: ['Page', 'Post'],
+        graphqlTypeName: 'WPGraphQL',
+       
       },
     },
     {

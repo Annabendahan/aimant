@@ -98,7 +98,12 @@ console.log(data)
   {comediennes.map( c =>
   
 <Link key={c.uri} to={`blog/${c.uri}`}>
+<div class="grid-item">
+     <div className="picture">
+  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="e" /> : " "}
+  </div>
   <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
+  </div>
   </Link>
  
   )}
@@ -118,7 +123,12 @@ console.log(data)
   {comediens.map( c =>
   
   <Link key={c.uri} to={`blog/${c.uri}`}>
+    <div class="grid-item">
+     <div className="picture">
+  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="e" /> : " "}
+  </div>
   <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
+  </div>
     </Link>
    
     )}
@@ -137,7 +147,12 @@ console.log(data)
   {auteurs.map( c =>
   
   <Link key={c.uri} to={`blog/${c.uri}`}>
+ <div class="grid-item">
+     <div className="picture">
+  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="e" /> : " "}
+  </div>
   <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
+  </div>
     </Link>
    
     )}
@@ -156,7 +171,12 @@ console.log(data)
   {metteurs.map( c =>
   
   <Link key={c.uri} to={`blog/${c.uri}`}>
+  <div class="grid-item">
+     <div className="picture">
+  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="e" /> : " "}
+  </div>
   <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
+  </div>
     </Link>
    
     )}
@@ -274,6 +294,13 @@ export const query = graphql`
             content
             excerpt
             uri
+            mignature {
+              mignature {
+                id
+                sourceUrl
+              }
+            }
+            
             
             categories {
               edges {
@@ -283,7 +310,7 @@ export const query = graphql`
                 }
               }
             }
-           
+          
         }
       }
     }

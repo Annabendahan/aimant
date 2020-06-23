@@ -73,6 +73,9 @@
         h2{
             color: map-get($colors, red );
         }
+        p{
+            color: map-get($colors, red ) !important;
+        }
     }
     a{
         text-decoration: none !important;

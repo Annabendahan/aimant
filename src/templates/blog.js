@@ -48,8 +48,16 @@ class IndexPage extends Component {
     const comediens = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 3 )
     const auteurs = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 4 )
     // const metteurs = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 5 )
-    const infos = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 7 )
     const apropos = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 6 )
+    const infos = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 7 )
+    const nom = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 8 )
+    const mail = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 9 )
+    const adresse = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 10 )
+    const ville = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 11)
+    const numero = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 12 )
+
+    const contact = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 13 )
+
 
 console.log(data)
 
@@ -173,13 +181,53 @@ console.log(data)
 
 <img src={logo} alt="logo"/>
 
+{nom.map( c =>
+  
+  
+  <p   className="apropos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
 
-{infos.map( c =>
+ 
+  )} 
+
+
+{mail.map( c =>
   
   
   <p   className="infos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
 
- 
+  )} 
+
+
+{adresse.map( c =>
+  
+  
+  <p   className="infos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
+
+  )} 
+
+
+
+{ville.map( c =>
+  
+  
+  <p   className="infos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
+
+  )} 
+
+{numero.map( c =>
+  
+  
+  <p   className="infos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
+
+  )} 
+
+
+
+{contact.map( c =>
+  
+  
+  <p   className="infos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
+
   )} 
 
 {/* <p
@@ -220,7 +268,7 @@ export default IndexPage
 export const query = graphql`
   query GET_ALL_POSTS {
     wpgraphql {
-      posts(first: 40, where: {orderby: {field: TITLE, order: ASC}}) {
+      posts(first: 1000, where: {orderby: {field: TITLE, order: ASC}}) {
         nodes{
             id
             title

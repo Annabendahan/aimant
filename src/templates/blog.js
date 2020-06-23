@@ -47,7 +47,7 @@ class IndexPage extends Component {
     const comediennes = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 2 )
     const comediens = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 3 )
     const auteurs = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 4 )
-    // const metteurs = data.allWordpressPost.edges.filter(p => p.node.categories[0] == 5 )
+    const metteurs = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 5 )
     const apropos = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 6 )
     const infos = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 7 )
     const nom = data.wpgraphql.posts.nodes.filter(p => p.categories.edges[0].node.categoryId == 8 )
@@ -145,7 +145,7 @@ console.log(data)
 
 </div>
 </div>
-{/* 
+
 
 <div id="metteurs" className="section section__white">
   <div className="cards">
@@ -154,17 +154,16 @@ console.log(data)
   <div class="grid-container">
 
   {metteurs.map( c =>
-  <div className="grid-item" key={c.node.slug}>
-     <Link to={`/${c.node.path}`}>
-<img src={c.node.excerpt.replace(/<\/?p[^>]*>/g, "")} />
-  <p className="name">{c.node.title}</p> 
-  </Link>
-  </div>
-  )}
+  
+  <Link key={c.uri} to={`blog/${c.uri}`}>
+  <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
+    </Link>
+   
+    )}
 </div>
 
 </div>
-</div> */}
+</div>
 
 
 <div id="contact" className="home__footer">
@@ -275,6 +274,7 @@ export const query = graphql`
             content
             excerpt
             uri
+            
             categories {
               edges {
                 node {

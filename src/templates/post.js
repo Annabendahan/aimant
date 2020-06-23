@@ -20,9 +20,8 @@ const Post = props => {
   return (
     <div>
               <div>
-              {post}
-              <h1>{title}</h1>
-              <h1>post</h1> post 
+              
+         
                 {contentParser({ content }, { wordPressUrl, uploadsUrl })}
               </div>
              

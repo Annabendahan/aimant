@@ -97,7 +97,7 @@ console.log(data)
 
   {comediennes.map( c =>
   
-<Link key={c.uri} to={`blog/${c.uri}`}>
+<Link key={c.uri} to={`profiles/${c.uri}`}>
 <div class="grid-item">
      <div className="picture">
   {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="e" /> : " "}
@@ -122,7 +122,7 @@ console.log(data)
  
   {comediens.map( c =>
   
-  <Link key={c.uri} to={`blog/${c.uri}`}>
+  <Link key={c.uri} to={`profiles/${c.uri}`}>
     <div class="grid-item">
      <div className="picture">
   {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="e" /> : " "}
@@ -146,7 +146,7 @@ console.log(data)
 
   {auteurs.map( c =>
   
-  <Link key={c.uri} to={`blog/${c.uri}`}>
+  <Link key={c.uri} to={`profiles/${c.uri}`}>
  <div class="grid-item">
      <div className="picture">
   {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="e" /> : " "}
@@ -170,7 +170,7 @@ console.log(data)
 
   {metteurs.map( c =>
   
-  <Link key={c.uri} to={`blog/${c.uri}`}>
+  <Link key={c.uri} to={`profiles/${c.uri}`}>
   <div class="grid-item">
      <div className="picture">
   {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="e" /> : " "}

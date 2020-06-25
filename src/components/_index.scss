@@ -289,3 +289,13 @@
       }
      
   }
+
+
+  .download{
+      color: red;
+     margin-left: 20px;
+     text-decoration: underline;
+      &:hover{
+          cursor: pointer;
+      }
+  }

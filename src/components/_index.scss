@@ -292,10 +292,14 @@
 
 
   .download{
-      color: red;
-     margin-left: 20px;
-     text-decoration: underline;
-      &:hover{
-          cursor: pointer;
+      display: none; 
+      @include breakpoint(s){
+        color: red;
+        margin-left: 20px;
+        text-decoration: underline;
+         &:hover{
+             cursor: pointer;
+         }
       }
+    
   }

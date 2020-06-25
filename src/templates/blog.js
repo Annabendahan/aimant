@@ -100,7 +100,7 @@ console.log(data)
 <Link key={c.uri} to={`profiles/${c.uri}`}>
 <div class="grid-item">
      <div className="picture">
-  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="e" /> : " "}
+  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="photo" /> : " "}
   </div>
   <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
   </div>
@@ -125,7 +125,7 @@ console.log(data)
   <Link key={c.uri} to={`profiles/${c.uri}`}>
     <div class="grid-item">
      <div className="picture">
-  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="e" /> : " "}
+  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="photo" /> : " "}
   </div>
   <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
   </div>
@@ -149,7 +149,7 @@ console.log(data)
   <Link key={c.uri} to={`profiles/${c.uri}`}>
  <div class="grid-item">
      <div className="picture">
-  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="e" /> : " "}
+  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="photo" /> : " "}
   </div>
   <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
   </div>
@@ -173,7 +173,7 @@ console.log(data)
   <Link key={c.uri} to={`profiles/${c.uri}`}>
   <div class="grid-item">
      <div className="picture">
-  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="e" /> : " "}
+  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="photo" /> : " "}
   </div>
   <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
   </div>

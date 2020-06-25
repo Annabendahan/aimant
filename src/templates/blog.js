@@ -76,11 +76,11 @@ console.log(data)
 <div className="home__menu">
 
 <div className="home__tabs">
-          <h3 onClick={() => this.scrollTo("comediennes")}>Comédiennes</h3>
+          <h4 onClick={() => this.scrollTo("comediennes")}>Comédiennes</h4>
 
-         <h3 onClick={() => this.scrollTo("comediens")}>Comédiens</h3>
-          <h3 onClick={() => this.scrollTo("auteurs")}>Auteurs <br/> et  réalisateurs</h3>
-          <h3 onClick={() => this.scrollTo("metteurs")}>Metteurs en scène</h3>
+         <h4 onClick={() => this.scrollTo("comediens")}>Comédiens</h4>
+          <h4 onClick={() => this.scrollTo("auteurs")}>Auteurs <br/> et  réalisateurs</h4>
+          <h4 onClick={() => this.scrollTo("metteurs")}>Metteurs en scène</h4>
 
         </div>
 
@@ -212,8 +212,10 @@ console.log(data)
 {mail.map( c =>
   
   
-  <p   className="infos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
+<a href={`mailto:${c.content.replace(/<\/?[^>]*?>/gi,'')}`} >
 
+<p   className="infos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
+</a>
   )} 
 
 
@@ -243,9 +245,14 @@ console.log(data)
 
 
 {contact.map( c =>
+
+<a href={`mailto:${c.content.replace(/<\/?[^>]*?>/gi,'')}`} >
+
+<p   className="infos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
+</a>
   
   
-  <p   className="infos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
+  
 
   )} 
 

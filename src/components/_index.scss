@@ -28,7 +28,7 @@
     &__tabs{
         text-align: center;
        
-        h3{
+        h4{
             margin: 50px 0px;
             &:hover{
                 color: map-get($colors, red );
@@ -210,6 +210,13 @@
  
  
     margin:auto;
+
+    p{
+        @include breakpoint(l){
+            font-size: 0.9rem;
+        }
+        
+    }
     
 }
 

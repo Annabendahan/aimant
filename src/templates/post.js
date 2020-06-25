@@ -23,6 +23,8 @@ const Post = props => {
               
          
                 {contentParser({ content }, { wordPressUrl, uploadsUrl })}
+                <a href="https://pdf-ace.com/pdfme/" target= "_blank">Save as PDF</a>
+
               </div>
              
                 </div>

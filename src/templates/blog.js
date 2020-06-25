@@ -66,7 +66,7 @@ console.log(data)
     return(
 <Layout>
 
-<SEO title="Home" />
+<SEO title="Aimant" />
 <div className="home__main">
   <img src={logo} alt="logo"/>
 </div>

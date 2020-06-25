@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Aimant`,
-    description: `Agence artistique`,
+    title: `Agence artistique`,
+    description: `Aimant - Agence artistique`,
     author: `François Tessier`,
   },
   plugins: [

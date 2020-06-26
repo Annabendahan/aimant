@@ -194,10 +194,8 @@ console.log(data)
 {apropos.map( c =>
   
   
-    <p
-    className="apropos"
-    dangerouslySetInnerHTML={{ __html: c.content }}
-  />
+  <p   className="apropos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
+
  
    
     )} 

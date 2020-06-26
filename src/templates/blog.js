@@ -3,6 +3,7 @@ import { graphql, navigate } from "gatsby"
 import Layout from "../components/layout"
 import logo from "../images/aimant_logo.png"
 import { Link } from "gatsby"
+import pierre from "../images/pierre_guenard-003.png"
 
 import SEO from "../components/seo"
 
@@ -100,7 +101,7 @@ console.log(data)
 <Link key={c.uri} to={`profiles/${c.uri}`}>
 <div class="grid-item">
      <div className="picture">
-  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="photo" /> : " "}
+  {c.acf.mignature ?  <img src={c.acf.mignature.sourceUrl} alt="photo" /> : " "}
   </div>
   <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
   </div>
@@ -125,7 +126,7 @@ console.log(data)
   <Link key={c.uri} to={`profiles/${c.uri}`}>
     <div class="grid-item">
      <div className="picture">
-  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="photo" /> : " "}
+  {c.acf.mignature ?  <img src={c.acf.mignature.sourceUrl} alt="photo" /> : " "}
   </div>
   <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
   </div>
@@ -149,7 +150,7 @@ console.log(data)
   <Link key={c.uri} to={`profiles/${c.uri}`}>
  <div class="grid-item">
      <div className="picture">
-  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="photo" /> : " "}
+  {c.acf.mignature ?  <img src={c.acf.mignature.sourceUrl} alt="photo" /> : " "}
   </div>
   <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
   </div>
@@ -173,7 +174,7 @@ console.log(data)
   <Link key={c.uri} to={`profiles/${c.uri}`}>
   <div class="grid-item">
      <div className="picture">
-  {c.mignature.mignature ?  <img src={c.mignature.mignature.sourceUrl} alt="photo" /> : " "}
+  {c.acf.mignature ?  <img src={c.acf.mignature.sourceUrl} alt="photo" /> : " "}
   </div>
   <p>{c.excerpt.replace(/<\/?[^>]*?>/gi,'')}</p> 
   </div>
@@ -277,6 +278,9 @@ console.log(data)
 </svg>
 </div>
 
+
+
+
 </Layout>
 
 
@@ -301,7 +305,7 @@ export const query = graphql`
             content
             excerpt
             uri
-            mignature {
+            acf {
               mignature {
                 id
                 sourceUrl

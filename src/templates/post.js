@@ -7,6 +7,7 @@ import contentParser from "gatsby-wpgraphql-inline-images"
 
 const Post = props => {
   console.log("post")
+  console.log(props)
   const {
     location,
     data: {
@@ -20,6 +21,18 @@ const Post = props => {
   return (
     <div>
               <div>
+              {props.data.wpgraphql.post.acf.bannertext ? 
+              <div className="test">
+{/* <div className="rect" style={{backgroundImage: 'url(' + require('../images/pierre_guenard-003.png') + ')'}}> */}
+<div className="rect" style={{backgroundImage: `url(${props.data.wpgraphql.post.acf.bannerpicture.sourceUrl})`}}>
+
+  <div className="nameBig">{props.data.wpgraphql.post.acf.bannertext}</div>
+ 
+</div>  
+ 
+
+</div>
+: null }
               
          
                 {contentParser({ content }, { wordPressUrl, uploadsUrl })}
@@ -40,6 +53,12 @@ export const pageQuery = graphql`
         title
         content
         uri
+        acf {
+          bannertext
+          bannerpicture {
+            sourceUrl
+          }
+        }
         
        
       }

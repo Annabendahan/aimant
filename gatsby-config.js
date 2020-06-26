@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `aimant`,
+    title: `.:: aimant ::.`,
     description: `.:: aimant ::: agence artistique ::.`,
     author: `François Tessier`,
   },

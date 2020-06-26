@@ -48,6 +48,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    p{
+        font-size: .9rem !important;
+    }
     }
 }
 
@@ -157,6 +160,7 @@
 
 .apropos{
     width:50%;
+    font-size: 0.9rem !important;
     text-align: center;
     color:white !important;
         font-weight: bold !important;

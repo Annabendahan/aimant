@@ -67,7 +67,7 @@ console.log(data)
     return(
 <Layout>
 
-<SEO title="Aimant" />
+<SEO title=".:: aimant ::: agence artistique ::." />
 <div className="home__main">
   <img src={logo} alt="logo"/>
 </div>

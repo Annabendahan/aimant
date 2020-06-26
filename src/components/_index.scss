@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: space-around;
     img{
-        width:30%;
+        width:28%;
     }
     }
     &__menu{
@@ -230,7 +230,7 @@
 
 
   .grid-item {
-    filter: grayscale(100%);
+    
     max-width: 350px;
     @include breakpoint(xxl){
         max-width: unset;
@@ -243,6 +243,7 @@
 
     p{
         color: white;
+        
         
     }
     img{
@@ -270,13 +271,9 @@
             height: 300px; 
             width: 300px;
         }
-    }
-    &:hover{
-        filter: grayscale(0%);
-        transition: filter .8s ease-out;
-
        
     }
+   
     
    
     
@@ -285,7 +282,14 @@
 
   .picture{
       img{
+        filter: grayscale(100%);
         flex: 0 0 80%;
+        &:hover{
+            filter: grayscale(0%);
+            transition: filter .8s ease-out;
+    
+           
+        }
       }
      
   }

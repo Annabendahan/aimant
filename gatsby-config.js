@@ -29,12 +29,7 @@ module.exports = {
         url: "http://aimantarwm.cluster021.hosting.ovh.net/graphql",
       },
     },
-    {
-      resolve: `gatsby-plugin-styled-components`,
-      options: {
-        // Add any options here
-      },
-    },
+   
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

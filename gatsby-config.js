@@ -17,6 +17,7 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-image`,
     `gatsby-plugin-sharp`,
+
     {
       resolve: "gatsby-source-graphql",
       options: {
@@ -29,13 +30,9 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-wpgraphql-inline-images',
+      resolve: `gatsby-plugin-styled-components`,
       options: {
-        wordPressUrl: 'http://aimantarwm.cluster021.hosting.ovh.net/',
-        uploadsUrl: 'http://aimantarwm.cluster021.hosting.ovh.net/wp-content/uploads/',
-        processPostTypes: ['Page', 'Post'],
-        graphqlTypeName: 'WPGraphQL',
-       
+        // Add any options here
       },
     },
     {

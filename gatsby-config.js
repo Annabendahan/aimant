@@ -29,7 +29,17 @@ module.exports = {
         url: "http://aimantarwm.cluster021.hosting.ovh.net/graphql",
       },
     },
-   
+    
+    {
+      resolve: 'gatsby-wpgraphql-inline-images',
+      options: {
+        wordPressUrl: 'http://aimantarwm.cluster021.hosting.ovh.net/',
+        uploadsUrl: 'http://aimantarwm.cluster021.hosting.ovh.net/wp-content/uploads/',
+        processPostTypes: ['Page', 'Post'],
+        graphqlTypeName: 'WPGraphQL',
+       
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

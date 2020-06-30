@@ -36,9 +36,10 @@ const Post = props => {
               
          
                 {contentParser({ content }, { wordPressUrl, uploadsUrl })}
-                <p className="download" onClick={() => window.print()}>Télécharger le cv</p>             
 
               </div>
+              <p className="download" onClick={() => window.print()}>Télécharger le cv</p>             
+
                 </div>
            
   )

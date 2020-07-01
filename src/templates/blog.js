@@ -195,8 +195,6 @@ console.log(data)
   
   
   <p   className="apropos">{c.content.replace(/<\/?[^>]*?>/gi,'')}</p> 
-
- 
    
     )} 
 

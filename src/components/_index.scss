@@ -97,7 +97,7 @@
         text-decoration: none !important;
     }
     h2{
-        color: map-get($colors, black);
+        color: map-get($colors, red);
     }
        
 }
@@ -346,7 +346,7 @@
       }
    
       font-weight: 900;
-      width: 150vw;
+      width: 500vw;
       position: absolute;
       bottom: 60px;
   }

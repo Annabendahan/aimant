@@ -27,12 +27,12 @@ const Layout = ({ children }) => {
     <>
       <div
         style={{
-        
+
         }}
       >
         <main>{children}</main>
         <footer> </footer>
-        
+
       </div>
     </>
   )

@@ -326,8 +326,9 @@
       top:0px;
       left:0px;
       width: 100%;
-      height: 100px;
-      @include breakpoint(m){
+      height: 70px;
+      
+      @include breakpoint(s){
         height: 150px;
       }
      
@@ -340,11 +341,25 @@
 
   .nameBig{
       color: white;
-      font-size: 8rem;
+      font-size: 4rem;
       width: 600vw;
+      bottom: 10px;
+      @include breakpoint(s){
+        font-size: 8rem;
+        width: 600vw;
+        bottom: 30px;
+        
+      }
       @include breakpoint(m){
+        font-size: 11rem;
+        width: 200vw;
+        bottom: 60px;
+      }
+
+      @include breakpoint(l){
         font-size: 13rem;
         width: 200vw;
+        bottom: 60px;
       }
 
       @include breakpoint(xxl){
@@ -355,5 +370,5 @@
       font-weight: 900;
       
       position: absolute;
-      bottom: 60px;
+      
   }

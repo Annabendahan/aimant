@@ -2,29 +2,23 @@ const createPosts = require(`./gatsby/createPosts`)
 const createPages = require(`./gatsby/createPages`)
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
-
 exports.createPages = async ({ actions, graphql }) => {
   const pluginOptions = {
-    wordPressUrl: `https://aimant.art/`,
-    uploadsUrl: `https://aimant.art/wp-content/uploads/`,
+    wordPressUrl: `https://cms.aimant.art/`,
+    uploadsUrl: `https://cms.aimant.art/wp-content/uploads/`,
   }
   await createPosts({ actions, graphql }, pluginOptions)
   await createPages({ actions, graphql }, pluginOptions)
-
-
-
 }
 
-exports.createResolvers = async (
-  {
-    actions,
-    cache,
-    createNodeId,
-    createResolvers,
-    store,
-    reporter,
-  },
-) => {
+exports.createResolvers = async ({
+  actions,
+  cache,
+  createNodeId,
+  createResolvers,
+  store,
+  reporter,
+}) => {
   const { createNode } = actions
 
   await createResolvers({

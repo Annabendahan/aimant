@@ -5,6 +5,26 @@ import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox"
 import contentParser from "gatsby-wpgraphql-inline-images"
 import "../components/style.scss?version=4"
 
+const options = {
+  buttons: {
+    showAutoplayButton: false,
+    showCloseButton: true,
+    showDownloadButton: false,
+    showFullscreenButton: false,
+    showNextButton: true,
+    showPrevButton: true,
+    showThumbnailsButton: false,
+  },
+  thumbnails: {
+    showThumbnails: false,
+  },
+  caption: {
+    captionAlignment: "center",
+    captionColor: "#FFFFFF",
+    showCaption: true,
+  },
+}
+
 const Post = props => {
   const {
     data: {
@@ -14,7 +34,14 @@ const Post = props => {
       pluginOptions: { wordPressUrl, uploadsUrl },
     },
   } = props
-  const { content } = post
+  const { title, content } = post
+  const customCaptions = Array(10)
+    .fill(null)
+    .map((item, index) => ({
+      id: index,
+      caption: <div className="caption">{title} &copy;</div>,
+    }))
+  console.log(customCaptions)
   return (
     <SimpleReactLightbox>
       <div>
@@ -33,7 +60,7 @@ const Post = props => {
           </div>
         ) : null}
 
-        <SRLWrapper>
+        <SRLWrapper options={options} customCaptions={customCaptions}>
           {contentParser({ content }, { wordPressUrl, uploadsUrl })}
         </SRLWrapper>
       </div>

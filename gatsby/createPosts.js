@@ -27,6 +27,7 @@ module.exports = async ({ actions, graphql }, pluginOptions) => {
   let pageNumber = 0
   const fetchPosts = async variables =>
     await graphql(GET_POSTS, variables).then(({ data }) => {
+      console.log({ data })
       const {
         wpgraphql: {
           posts: {

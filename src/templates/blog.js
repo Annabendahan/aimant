@@ -7,25 +7,28 @@ import pierre from "../images/pierre_guenard-003.png"
 
 import SEO from "../components/seo"
 
+const setDisplayImage = (content, acf) => {
+  const imgRex = /<img.*?src="(.*?)"[^>]+>/g
+  const images = []
+  let img
+  while ((img = imgRex.exec(content))) {
+    images.push(img[1])
+  }
+
+  let displayImage = acf && acf.mignature.sourceUrl
+
+  if (images.length >= 0) {
+    displayImage = images[1] || images[0]
+  }
+
+  return displayImage
+}
+
 class IndexPage extends Component {
   scrollTo = idd => {
     var element = document.getElementById(idd)
     element.scrollIntoView({ behavior: "smooth" })
   }
-
-  //   getPicture = async (pic) => {
-  //     const response = await fetch(pic)
-  //     const data = await response.json()
-
-  //     return data.source_url
-
-  //   //         data: data,
-  //   //         status: response.status
-  //   //     })
-  //   // ).then(res => {
-  //   //     console.log(res.status, res.data)
-  //   // }));
-  // }
 
   render() {
     const data = this.props.data
@@ -92,20 +95,19 @@ class IndexPage extends Component {
             <h2> Comédiennes </h2>
 
             <div className="grid-container">
-              {comediennes.map(c => (
-                <Link key={c.uri} to={`profiles/${c.uri}`}>
-                  <div className="grid-item">
-                    <div className="picture">
-                      {c.acf.mignature ? (
-                        <img src={c.acf.mignature.sourceUrl} alt="photo" />
-                      ) : (
-                        " "
-                      )}
+              {comediennes.map(c => {
+                const image = setDisplayImage(c.content, c.acf)
+                return (
+                  <Link key={c.uri} to={`profiles/${c.uri}`}>
+                    <div className="grid-item">
+                      <div className="picture">
+                        {image ? <img src={image} alt="photo" /> : " "}
+                      </div>
+                      <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, "")}</p>
                     </div>
-                    <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, "")}</p>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -115,20 +117,19 @@ class IndexPage extends Component {
             <h2> Comédiens</h2>
 
             <div className="grid-container">
-              {comediens.map(c => (
-                <Link key={c.uri} to={`profiles/${c.uri}`}>
-                  <div className="grid-item">
-                    <div className="picture">
-                      {c.acf.mignature ? (
-                        <img src={c.acf.mignature.sourceUrl} alt="photo" />
-                      ) : (
-                        " "
-                      )}
+              {comediens.map(c => {
+                const image = setDisplayImage(c.content, c.acf)
+                return (
+                  <Link key={c.uri} to={`profiles/${c.uri}`}>
+                    <div className="grid-item">
+                      <div className="picture">
+                        {image ? <img src={image} alt="photo" /> : " "}
+                      </div>
+                      <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, "")}</p>
                     </div>
-                    <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, "")}</p>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -138,20 +139,19 @@ class IndexPage extends Component {
             <h2> Auteurs et réalisateurs</h2>
 
             <div className="grid-container">
-              {auteurs.map(c => (
-                <Link key={c.uri} to={`profiles/${c.uri}`}>
-                  <div className="grid-item">
-                    <div className="picture">
-                      {c.acf.mignature ? (
-                        <img src={c.acf.mignature.sourceUrl} alt="photo" />
-                      ) : (
-                        " "
-                      )}
+              {auteurs.map(c => {
+                const image = setDisplayImage(c.content, c.acf)
+                return (
+                  <Link key={c.uri} to={`profiles/${c.uri}`}>
+                    <div className="grid-item">
+                      <div className="picture">
+                        {image ? <img src={image} alt="photo" /> : " "}
+                      </div>
+                      <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, "")}</p>
                     </div>
-                    <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, "")}</p>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -161,20 +161,19 @@ class IndexPage extends Component {
             <h2> Metteurs en scène</h2>
 
             <div className="grid-container">
-              {metteurs.map(c => (
-                <Link key={c.uri} to={`profiles/${c.uri}`}>
-                  <div className="grid-item">
-                    <div className="picture">
-                      {c.acf.mignature ? (
-                        <img src={c.acf.mignature.sourceUrl} alt="photo" />
-                      ) : (
-                        " "
-                      )}
+              {metteurs.map(c => {
+                const image = setDisplayImage(c.content, c.acf)
+                return (
+                  <Link key={c.uri} to={`profiles/${c.uri}`}>
+                    <div className="grid-item">
+                      <div className="picture">
+                        {image ? <img src={image} alt="photo" /> : " "}
+                      </div>
+                      <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, "")}</p>
                     </div>
-                    <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, "")}</p>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -213,11 +212,6 @@ class IndexPage extends Component {
               <p className="infos">{c.content.replace(/<\/?[^>]*?>/gi, "")}</p>
             </a>
           ))}
-
-          {/* <p
-                className="infos"
-                dangerouslySetInnerHTML={{ __html: infos[0].node.content }}
-              /> */}
         </div>
 
         <div className="instagram">
@@ -284,7 +278,6 @@ export const query = graphql`
               sourceUrl
             }
           }
-
           categories {
             edges {
               node {

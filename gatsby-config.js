@@ -26,18 +26,17 @@ module.exports = {
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
         fieldName: "wpgraphql",
         // Url to query from
-        url: "http://aimantarwm.cluster021.hosting.ovh.net/graphql",
+        url: "https://cms.aimant.art/graphql",
       },
     },
-    
+
     {
-      resolve: 'gatsby-wpgraphql-inline-images',
+      resolve: "gatsby-wpgraphql-inline-images",
       options: {
-        wordPressUrl: 'http://aimantarwm.cluster021.hosting.ovh.net/',
-        uploadsUrl: 'http://aimantarwm.cluster021.hosting.ovh.net/wp-content/uploads/',
-        processPostTypes: ['Page', 'Post'],
-        graphqlTypeName: 'WPGraphQL',
-       
+        wordPressUrl: "https://cms.aimant.art/",
+        uploadsUrl: "https://cms.aimant.art/wp-content/uploads/",
+        processPostTypes: ["Page", "Post"],
+        graphqlTypeName: "WPGraphQL",
       },
     },
     {

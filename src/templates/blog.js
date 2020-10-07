@@ -68,6 +68,10 @@ class IndexPage extends Component {
       p => parseInt(p.categories.edges[0].node.categoryId, 10) === 13
     )
 
+
+
+
+
     return (
       <Layout>
         <SEO title=".:: aimant ::: agence artistique ::." />
@@ -99,8 +103,8 @@ class IndexPage extends Component {
                       {c.acf.mignature ? (
                         <img src={c.acf.mignature.sourceUrl} alt="photo" />
                       ) : (
-                        " "
-                      )}
+                          " "
+                        )}
                     </div>
                     <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, "")}</p>
                   </div>
@@ -122,8 +126,8 @@ class IndexPage extends Component {
                       {c.acf.mignature ? (
                         <img src={c.acf.mignature.sourceUrl} alt="photo" />
                       ) : (
-                        " "
-                      )}
+                          " "
+                        )}
                     </div>
                     <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, "")}</p>
                   </div>
@@ -145,8 +149,8 @@ class IndexPage extends Component {
                       {c.acf.mignature ? (
                         <img src={c.acf.mignature.sourceUrl} alt="photo" />
                       ) : (
-                        " "
-                      )}
+                          " "
+                        )}
                     </div>
                     <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, "")}</p>
                   </div>
@@ -168,8 +172,8 @@ class IndexPage extends Component {
                       {c.acf.mignature ? (
                         <img src={c.acf.mignature.sourceUrl} alt="photo" />
                       ) : (
-                        " "
-                      )}
+                          " "
+                        )}
                     </div>
                     <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, "")}</p>
                   </div>

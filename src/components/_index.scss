@@ -88,6 +88,8 @@
 
 
 .wp-block-columns{
+    padding-top: 30vh;
+    
     display: flex !important;
     &:nth-child(1){ 
        
@@ -102,10 +104,13 @@
        
 }
 
+
+
 .wp-block-column{
    
    
     margin: 1rem;
+ 
  
     @include breakpoint(s) {
         margin-right: 50px;
@@ -124,12 +129,32 @@
     }
 }
 
+
+
+.demo{
+    margin-left: 5vw;
+    position: absolute;
+    top: 15vh;
+    @include breakpoint(s){
+        top: 18vh;
+        margin-left: 1vw;
+      }
+
+      @include breakpoint(m){
+        top: 35vh;
+        margin-left: 1vw;
+      }
+   
+  }
+
 .left-column{
     width: 20vw;
 }
 
 .banner{
     width: 100vw !important;
+    position: absolute;
+    top: 0px;
     
    
     
@@ -371,4 +396,10 @@
       
       position: absolute;
       
+  }
+
+  
+
+  .margintop{
+padding-top: 300px !important;
   }

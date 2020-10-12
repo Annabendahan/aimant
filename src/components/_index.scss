@@ -88,13 +88,10 @@
 
 
 .wp-block-columns{
-    padding-top: 30vh;
+
     
     display: flex !important;
-    &:nth-child(1){ 
-       
-        width: 20vw !important;
-    }
+   
     a{
         text-decoration: none !important;
     }
@@ -102,6 +99,13 @@
         color: map-get($colors, red);
     }
        
+}
+
+.has-2-columns{
+    margin-top: 15vh;
+    @include breakpoint(s){
+        margin-top: 30vh;
+      }
 }
 
 

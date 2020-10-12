@@ -65,11 +65,11 @@ const Post = props => {
               </div>
             </div>
           </div>
-        ) : null}
+        ) : <div className="test2"> </div>}
 
         {/* Vidéo */}
 
-        {props.data.wpgraphql.post.acf.video ? (
+        {/* {props.data.wpgraphql.post.acf.video ? (
           <div className="demo">
             <div>
 
@@ -89,7 +89,7 @@ const Post = props => {
 
             </div>
           </div>
-        ) : null}
+        ) : null} */}
 
 
 

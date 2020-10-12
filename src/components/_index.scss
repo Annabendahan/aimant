@@ -102,10 +102,7 @@
 }
 
 .has-2-columns{
-    margin-top: 15vh;
-    @include breakpoint(s){
-        margin-top: 30vh;
-      }
+  
 }
 
 
@@ -347,7 +344,29 @@
 
   .test{
       position : relative;
-      padding-bottom: 170px;
+      height:100px;
+      @include breakpoint(s){
+        height:200px;
+      }
+      @include breakpoint(l){
+        height:230px;
+      }
+      @include breakpoint(xxl){
+        height:300px;
+      }
+  }
+
+  .test2{
+      height:100px;
+      @include breakpoint(s){
+        height:200px;
+      }
+      @include breakpoint(l){
+        height:230px;
+      }
+      @include breakpoint(xxl){
+        height:300px;
+      }
   }
   .rect{
       position: absolute; 

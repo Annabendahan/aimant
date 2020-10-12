@@ -42,9 +42,16 @@ const Post = props => {
       caption: <div className="caption">{title} &copy;</div>,
     }))
   console.log(customCaptions)
+
+  console.log(props.data.wpgraphql.post.acf.video)
+
+
+
+
   return (
     <SimpleReactLightbox>
       <div>
+        {/* Bannière */}
         {props.data.wpgraphql.post.acf.bannertext ? (
           <div className="test">
             <div
@@ -60,31 +67,73 @@ const Post = props => {
           </div>
         ) : null}
 
-        <SRLWrapper options={options} customCaptions={customCaptions}>
-          {contentParser({ content }, { wordPressUrl, uploadsUrl })}
-        </SRLWrapper>
+        {/* Vidéo */}
+
+        {props.data.wpgraphql.post.acf.video ? (
+          <div className="demo">
+            <div>
+
+
+
+              <iframe width="420" height="315"
+                src={props.data.wpgraphql.post.acf.video}>
+              </iframe>
+
+              <iframe width="420" height="315"
+                src="https://www.youtube.com/embed/tgbNymZ7vqY">
+              </iframe>
+
+
+
+              <p> VIDEO{props.data.wpgraphql.post.acf.video}</p>
+
+            </div>
+          </div>
+        ) : null}
+
+
+
+
+        {props.data.wpgraphql.post.acf.video ? (
+
+          <div className="margintop"><SRLWrapper options={options} customCaptions={customCaptions}>
+            {contentParser({ content }, { wordPressUrl, uploadsUrl })}
+          </SRLWrapper></div>
+
+        ) : <SRLWrapper options={options} customCaptions={customCaptions}>
+            {contentParser({ content }, { wordPressUrl, uploadsUrl })}
+          </SRLWrapper>}
+
+
+
+
+
+
+
       </div>
       <p className="download" onClick={() => window.print()}>
         Télécharger le cv
       </p>
     </SimpleReactLightbox>
   )
+
 }
 
 export default Post
 
 export const pageQuery = graphql`
   query GET_POST($id: ID!) {
-    wpgraphql {
-      post(id: $id) {
-        title
+          wpgraphql {
+          post(id: $id) {
+          title
         content
         uri
         acf {
           bannertext
           bannerpicture {
-            sourceUrl
-          }
+          sourceUrl
+        }
+          video
         }
       }
     }

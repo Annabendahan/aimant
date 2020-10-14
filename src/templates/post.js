@@ -97,11 +97,11 @@ const Post = props => {
 
         {props.data.wpgraphql.post.acf.video ? (
 
-          <div className="margintop"><SRLWrapper options={options} customCaptions={customCaptions}>
+          <div className="margintop"><SRLWrapper options={options} >
             {contentParser({ content }, { wordPressUrl, uploadsUrl })}
           </SRLWrapper></div>
 
-        ) : <SRLWrapper options={options} customCaptions={customCaptions}>
+        ) : <SRLWrapper options={options}>
             {contentParser({ content }, { wordPressUrl, uploadsUrl })}
           </SRLWrapper>}
 

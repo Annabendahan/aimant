@@ -42,6 +42,7 @@ const Post = props => {
       caption: <div className="caption">{title} &copy;</div>,
     }))
   console.log(customCaptions)
+  console.log(props.data.wpgraphql.post)
 
   console.log(props.data.wpgraphql.post.acf.video)
 

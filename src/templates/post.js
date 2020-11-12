@@ -58,13 +58,7 @@ const Post = props => {
   console.log('matchees' + matches)
 
 
-  if (url) {
-    matches.forEach(m => {
-      console.log(m)
-      m.classList.add("height")
-    })
 
-  }
 
 
 

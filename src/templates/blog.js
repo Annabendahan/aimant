@@ -32,7 +32,7 @@ class IndexPage extends Component {
 
     const cat1 = data.wpgraphql.categories.edges[2].node.name // Auteurs et réalisateurs
     const cat2 = data.wpgraphql.categories.edges[3].node.name // Comédiennes
-    const cat3 = data.wpgraphql.categories.edges[4].node.name // Comédiens
+    const cat3 = data.wpgraphql.categories.edges[4].node.name // Comédiens    ggg
     const cat4 = data.wpgraphql.categories.edges[8].node.name // Metteurs en scène
 
     const comediennes = data.wpgraphql.posts.nodes.filter(

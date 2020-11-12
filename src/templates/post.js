@@ -131,7 +131,6 @@ query GET_POST($id: ID!) {
         bannerpicture {
           sourceUrl
         }
-        video
       }
     }
   }

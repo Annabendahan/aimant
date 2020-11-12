@@ -30,6 +30,11 @@ class IndexPage extends Component {
   render() {
     const data = this.props.data
 
+    const cat1 = data.wpgraphql.categories.edges[2].node.name // Auteurs et réalisateurs
+    const cat2 = data.wpgraphql.categories.edges[3].node.name // Comédiennes
+    const cat3 = data.wpgraphql.categories.edges[4].node.name // Comédiens
+    const cat4 = data.wpgraphql.categories.edges[8].node.name // Metteurs en scène
+
     const comediennes = data.wpgraphql.posts.nodes.filter(
       p => parseInt(p.categories.edges[0].node.categoryId, 10) === 2
     )
@@ -81,19 +86,19 @@ class IndexPage extends Component {
 
         <div className="home__menu">
           <div className="home__tabs">
-            <h4 onClick={() => this.scrollTo("comediennes")}>Comédiennes</h4>
+            <h4 onClick={() => this.scrollTo("comediennes")}>{cat2}</h4>
 
-            <h4 onClick={() => this.scrollTo("comediens")}>Comédiens</h4>
+            <h4 onClick={() => this.scrollTo("comediens")}>{cat3}</h4>
             <h4 onClick={() => this.scrollTo("auteurs")}>
-              Auteurs <br /> et réalisateurs
+              {cat1}
             </h4>
-            <h4 onClick={() => this.scrollTo("metteurs")}>Metteurs en scène</h4>
+            <h4 onClick={() => this.scrollTo("metteurs")}>{cat4}</h4>
           </div>
         </div>
 
         <div id="comediennes" className="section section__red">
           <div className="cards">
-            <h2> Comédiennes </h2>
+            <h2> {cat2} </h2>
 
             <div className="grid-container">
               {comediennes.map(c => (
@@ -116,7 +121,7 @@ class IndexPage extends Component {
 
         <div id="comediens" className="section section__white">
           <div className="cards">
-            <h2> Comédiens</h2>
+            <h2> {cat3}</h2>
 
             <div className="grid-container">
               {comediens.map(c => (
@@ -139,7 +144,7 @@ class IndexPage extends Component {
 
         <div id="auteurs" className="section section__red">
           <div className="cards">
-            <h2> Auteurs et réalisateurs</h2>
+            <h2> {cat1}</h2>
 
             <div className="grid-container">
               {auteurs.map(c => (
@@ -162,7 +167,7 @@ class IndexPage extends Component {
 
         <div id="metteurs" className="section section__white">
           <div className="cards">
-            <h2> Metteurs en scène</h2>
+            <h2> {cat4}</h2>
 
             <div className="grid-container">
               {metteurs.map(c => (
@@ -294,8 +299,16 @@ export const query = graphql`
               node {
                 id
                 categoryId
+               
               }
             }
+          }
+        }
+      }
+      categories {
+        edges {
+          node {
+            name
           }
         }
       }

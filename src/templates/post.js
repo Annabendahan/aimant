@@ -48,11 +48,7 @@ const Post = props => {
   console.log(customCaptions)
   console.log(props.data.wpgraphql.post)
 
-  let url = props.data.wpgraphql.post.acf.video
 
-
-  console.log(props.data.wpgraphql.post.acf.video)
-  console.log(`URL ${url}`)
 
 
 
@@ -92,28 +88,8 @@ const Post = props => {
           </div>
         ) : <div className="test2"> </div>}
 
-        {/* Vidéo */}
 
 
-        {/* {props.data.wpgraphql.post.acf.video ? (
-          <div className="demo">
-            <div>
-
-
-
-              <iframe width="420" height="315"
-                src={url}>
-              </iframe>
-
-
-
-
-
-              <p> VIDEO{props.data.wpgraphql.post.acf.video}</p>
-
-            </div>
-          </div>
-        ) : null} */}
 
 
 

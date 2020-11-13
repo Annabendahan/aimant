@@ -16,19 +16,7 @@ class IndexPage extends Component {
     element.scrollIntoView({ behavior: "smooth" })
   }
 
-  //   getPicture = async (pic) => {
-  //     const response = await fetch(pic)
-  //     const data = await response.json()
 
-  //     return data.source_url
-
-  //   //         data: data,
-  //   //         status: response.status
-  //   //     })
-  //   // ).then(res => {
-  //   //     console.log(res.status, res.data)
-  //   // }));
-  // }
 
   render() {
     const data = this.props.data

@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import contentParser from "gatsby-wpgraphql-inline-images"
 
 const Page = props => {
-  console.log("page")
+
   const {
     location,
     data: {
@@ -16,12 +16,12 @@ const Page = props => {
   } = props
   const { title, content } = page
   return (
-   <div>
-              <div>
-             <h1>page</h1> page
+    <div>
+      <div>
+        <h1>page</h1> page
                 {contentParser({ content }, { wordPressUrl, uploadsUrl })}
-              </div>
-           </div>
+      </div>
+    </div>
   )
 }
 

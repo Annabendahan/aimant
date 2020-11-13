@@ -30,6 +30,7 @@
        
         h4{
             margin: 50px 0px;
+            max-width: 270px;
             &:hover{
                 color: map-get($colors, red );
                 transition: color .8s ease-out;

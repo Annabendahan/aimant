@@ -42,8 +42,8 @@ const Post = props => {
       id: index,
       caption: <div className="caption">{title} &copy;</div>,
     }))
-  console.log(customCaptions)
-  console.log(props.data.wpgraphql.post)
+
+
 
 
 
@@ -52,11 +52,6 @@ const Post = props => {
   if (typeof document !== "undefined") {
     matches = document.querySelectorAll("h6")
   }
-
-  console.log('matchees' + matches)
-
-
-
 
 
 

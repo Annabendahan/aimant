@@ -27,7 +27,7 @@ module.exports = async ({ actions, graphql }, pluginOptions) => {
   let pageNumber = 0
   const fetchPosts = async variables =>
     await graphql(GET_POSTS, variables).then(({ data }) => {
-      console.log({ data })
+
       const {
         wpgraphql: {
           posts: {
@@ -65,12 +65,12 @@ module.exports = async ({ actions, graphql }, pluginOptions) => {
     const postTemplate = path.resolve(`./src/templates/post.js`)
 
     blogPages.map(blogPage => {
-      console.log(`createBlogPage ${blogPage.context.pageNumber}`)
+
       createPage(blogPage)
     })
 
     allPosts.map(post => {
-      console.log(`create post: ${post.uri}`)
+
       createPage({
         path: `/profiles${post.uri}`,
         component: postTemplate,

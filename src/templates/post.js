@@ -27,9 +27,6 @@ const options = {
 
 const Post = props => {
 
-
-
-
   const {
     data: {
       wpgraphql: { post },

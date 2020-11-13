@@ -48,9 +48,10 @@ const Post = props => {
 
 
 
-
-
-  let matches = document.querySelectorAll("h6")
+  let matches = ""
+  if (typeof document !== "undefined") {
+    matches = document.querySelectorAll("h6")
+  }
 
   console.log('matchees' + matches)
 

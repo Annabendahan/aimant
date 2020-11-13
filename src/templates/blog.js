@@ -9,7 +9,10 @@ import SEO from "../components/seo"
 
 class IndexPage extends Component {
   scrollTo = idd => {
-    var element = document.getElementById(idd)
+    if (typeof document !== "undefined") {
+      var element = document.getElementById(idd)
+    }
+
     element.scrollIntoView({ behavior: "smooth" })
   }
 

@@ -128,11 +128,12 @@
   width: 20vw;
 }
 
-.banner {
-  width: 100vw !important;
-  position: absolute;
-  top: 0px;
+.abnner {
+  display: none;
+}
 
+.banner {
+  display: none;
   img {
     width: 100vw !important;
 
@@ -306,14 +307,16 @@
   display: flex;
   width: 100%;
   height: 70px;
+  margin-bottom: 32px;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
 
-  @include breakpoint(s) {
-    height: 150px;
+  @include breakpoint(l) {
+    height: 250px;
+    background-size: cover !important;
   }
 
-  background: red;
-  background-blend-mode: multiply;
-  background-size: cover;
+  background: #660000;
 }
 
 .artist-video {

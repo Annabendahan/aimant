@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "aimant-website",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Official Aimant Website",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Thomas & Anna & Kevin",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@u-wave/react-vimeo": "^0.9.2",
@@ -33,7 +33,9 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "prettier": "2.2.1"
+    "prettier": "2.2.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11"
   },
   "keywords": [
     "gatsby"
@@ -53,9 +55,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/Annabendahan/aimant/"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/Annabendahan/aimant/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "prettier --write"
+    ],
+    "src/**/*.scss": [
+      "prettier --write"
+    ]
   }
 }

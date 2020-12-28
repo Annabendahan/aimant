@@ -1,4 +1,4 @@
-const path = require(`path`)
+const path = require(`path`);
 module.exports = async ({ actions, graphql }, pluginOptions) => {
   const GET_PAGES = `
   query GET_PAGES($first:Int $after:String){
@@ -23,10 +23,10 @@ module.exports = async ({ actions, graphql }, pluginOptions) => {
       }
     }
   }
-  `
-  const { createPage } = actions
-  const allPages = []
-  const fetchPages = async variables =>
+  `;
+  const { createPage } = actions;
+  const allPages = [];
+  const fetchPages = async (variables) =>
     await graphql(GET_PAGES, variables).then(({ data }) => {
       const {
         wpgraphql: {
@@ -35,18 +35,18 @@ module.exports = async ({ actions, graphql }, pluginOptions) => {
             pageInfo: { hasNextPage, endCursor },
           },
         },
-      } = data
-      nodes.map(page => {
-        allPages.push(page)
-      })
+      } = data;
+      nodes.map((page) => {
+        allPages.push(page);
+      });
       if (hasNextPage) {
-        return fetchPages({ first: variables.first, after: endCursor })
+        return fetchPages({ first: variables.first, after: endCursor });
       }
-      return allPages
-    })
+      return allPages;
+    });
 
-  await fetchPages({ first: 100, after: null }).then(allPages => {
-    const pageTemplate = path.resolve(`./src/templates/page.js`)
+  await fetchPages({ first: 100, after: null }).then((allPages) => {
+    const pageTemplate = path.resolve(`./src/templates/page.js`);
 
     allPages.map(page => {
 
@@ -57,7 +57,7 @@ module.exports = async ({ actions, graphql }, pluginOptions) => {
           pluginOptions,
           ...page,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};

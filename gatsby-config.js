@@ -19,24 +19,24 @@ module.exports = {
     `gatsby-plugin-sharp`,
 
     {
-      resolve: "gatsby-source-graphql",
+      resolve: 'gatsby-source-graphql',
       options: {
         // Arbitrary name for the remote schema Query type
-        typeName: "WPGraphQL",
+        typeName: 'WPGraphQL',
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
-        fieldName: "wpgraphql",
+        fieldName: 'wpgraphql',
         // Url to query from
-        url: "https://cms.aimant.art/graphql",
+        url: 'https://cms.aimant.art/graphql',
       },
     },
 
     {
-      resolve: "gatsby-wpgraphql-inline-images",
+      resolve: 'gatsby-wpgraphql-inline-images',
       options: {
-        wordPressUrl: "https://cms.aimant.art/",
-        uploadsUrl: "https://cms.aimant.art/wp-content/uploads/",
-        processPostTypes: ["Page", "Post"],
-        graphqlTypeName: "WPGraphQL",
+        wordPressUrl: 'https://cms.aimant.art/',
+        uploadsUrl: 'https://cms.aimant.art/wp-content/uploads/',
+        processPostTypes: ['Page', 'Post'],
+        graphqlTypeName: 'WPGraphQL',
       },
     },
     {
@@ -55,4 +55,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

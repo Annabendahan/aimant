@@ -1,7 +1,7 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react';
+import { graphql } from 'gatsby';
 
-import contentParser from "gatsby-wpgraphql-inline-images"
+import contentParser from 'gatsby-wpgraphql-inline-images';
 
 const Page = props => {
 
@@ -13,8 +13,8 @@ const Page = props => {
     pageContext: {
       pluginOptions: { wordPressUrl, uploadsUrl },
     },
-  } = props
-  const { title, content } = page
+  } = props;
+  const { title, content } = page;
   return (
     <div>
       <div>
@@ -25,7 +25,7 @@ const Page = props => {
   )
 }
 
-export default Page
+export default Page;
 
 export const pageQuery = graphql`
   query GET_PAGE($id: ID!) {
@@ -37,4 +37,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

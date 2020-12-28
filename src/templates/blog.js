@@ -8,15 +8,13 @@ import pierre from '../images/pierre_guenard-003.png';
 import SEO from '../components/seo';
 
 class IndexPage extends Component {
-  scrollTo = idd => {
-    if (typeof document !== "undefined") {
-      var element = document.getElementById(idd)
+  scrollTo = (idd) => {
+    if (typeof document !== 'undefined') {
+      var element = document.getElementById(idd);
     }
 
-    element.scrollIntoView({ behavior: "smooth" })
-  }
-
-
+    element.scrollIntoView({ behavior: 'smooth' });
+  };
 
   render() {
     const data = this.props.data;

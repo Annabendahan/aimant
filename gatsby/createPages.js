@@ -48,8 +48,7 @@ module.exports = async ({ actions, graphql }, pluginOptions) => {
   await fetchPages({ first: 100, after: null }).then((allPages) => {
     const pageTemplate = path.resolve(`./src/templates/page.js`);
 
-    allPages.map(page => {
-
+    allPages.map((page) => {
       createPage({
         path: `/${page.uri}`,
         component: pageTemplate,

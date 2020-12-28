@@ -63,18 +63,19 @@ const Post = (props) => {
     <SimpleReactLightbox>
       <React.Fragment>
         {/* Bannière */}
-        {props.data.wpgraphql.post.acf.bannerpicture.sourceUrl && (
-          <div
-            className="banner-container"
-            style={{
-              backgroundImage: `url(${props.data.wpgraphql.post.acf.bannerpicture.sourceUrl})`,
-            }}
-          >
-            {!postHaveBanner && props.data.wpgraphql.post.acf.bannertext && (
-              <div className="nameBig">{props.data.wpgraphql.post.acf.bannertext}</div>
-            )}
-          </div>
-        )}
+        {props.data.wpgraphql.post.acf.bannerpicture &&
+          props.data.wpgraphql.post.acf.bannerpicture.sourceUrl && (
+            <div
+              className="banner-container"
+              style={{
+                backgroundImage: `url(${props.data.wpgraphql.post.acf.bannerpicture.sourceUrl})`,
+              }}
+            >
+              {!postHaveBanner && props.data.wpgraphql.post.acf.bannertext && (
+                <div className="nameBig">{props.data.wpgraphql.post.acf.bannertext}</div>
+              )}
+            </div>
+          )}
 
         {video && (
           <React.Fragment>

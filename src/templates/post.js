@@ -59,6 +59,8 @@ const Post = (props) => {
   const youtubeMatches =
     !isVimeo && video && video.match(/^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/);
   const youtubeId = youtubeMatches && youtubeMatches.length >= 1 ? youtubeMatches[2] : '';
+
+  const bannerClass = `banner-container${!postHaveBanner ? ' banner-red' : ''}`;
   return (
     <SimpleReactLightbox>
       <React.Fragment>
@@ -66,7 +68,7 @@ const Post = (props) => {
         {props.data.wpgraphql.post.acf.bannerpicture &&
           props.data.wpgraphql.post.acf.bannerpicture.sourceUrl && (
             <div
-              className="banner-container"
+              className={bannerClass}
               style={{
                 backgroundImage: `url(${props.data.wpgraphql.post.acf.bannerpicture.sourceUrl})`,
               }}

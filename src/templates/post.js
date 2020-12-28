@@ -1,9 +1,10 @@
-import React from "react"
-import { graphql } from "gatsby"
-import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox"
+import React from 'react';
+import { graphql } from 'gatsby';
+import SimpleReactLightbox, { SRLWrapper } from 'simple-react-lightbox';
+import Vimeo from '@u-wave/react-vimeo';
 
-import contentParser from "gatsby-wpgraphql-inline-images"
-import "../components/style.scss?version=4"
+import contentParser from 'gatsby-wpgraphql-inline-images';
+import '../components/style.scss?version=4';
 
 const options = {
   buttons: {
@@ -19,14 +20,13 @@ const options = {
     showThumbnails: false,
   },
   caption: {
-    captionAlignment: "center",
-    captionColor: "#FFFFFF",
+    captionAlignment: 'center',
+    captionColor: '#FFFFFF',
     showCaption: true,
   },
-}
+};
 
-const Post = props => {
-
+const Post = (props) => {
   const {
     data: {
       wpgraphql: { post },
@@ -34,92 +34,70 @@ const Post = props => {
     pageContext: {
       pluginOptions: { wordPressUrl, uploadsUrl },
     },
-  } = props
-  const { title, content } = post
+  } = props;
+  const { title, content, acf } = post;
+  const { video = '' } = acf || {};
   const customCaptions = Array(10)
     .fill(null)
     .map((item, index) => ({
       id: index,
       caption: <div className="caption">{title} &copy;</div>,
-    }))
-
-
-
-
-
-
-  let matches = ""
-  if (typeof document !== "undefined") {
-    matches = document.querySelectorAll("h6")
-  }
-
-
-
+    }));
 
   return (
     <SimpleReactLightbox>
-      <div>
+      <React.Fragment>
         {/* Bannière */}
-        {props.data.wpgraphql.post.acf.bannertext ? (
-          <div className="test">
-            <div
-              className="rect"
-              style={{
-                backgroundImage: `url(${props.data.wpgraphql.post.acf.bannerpicture.sourceUrl})`,
-              }}
-            >
-              <div className="nameBig">
-                {props.data.wpgraphql.post.acf.bannertext}
-              </div>
-            </div>
+        {props.data.wpgraphql.post.acf.bannertext && (
+          <div
+            className="banner-container"
+            style={{
+              backgroundImage: `url(${props.data.wpgraphql.post.acf.bannerpicture.sourceUrl})`,
+            }}
+          >
+            <div className="nameBig">{props.data.wpgraphql.post.acf.bannertext}</div>
           </div>
-        ) : <div className="test2"> </div>}
+        )}
 
+        {video && (
+          <Vimeo
+            className="artist-video"
+            video={video}
+            autplay={true}
+            autopause={true}
+            height="350"
+            width="800"
+          />
+        )}
 
-
-
-
-
-
-
-
-        <SRLWrapper options={options} >
+        <SRLWrapper options={options} customCaptions={customCaptions}>
           {contentParser({ content }, { wordPressUrl, uploadsUrl })}
         </SRLWrapper>
-
-
-
-
-
-
-
-
-
-      </div>
-      <p className="download" onClick={() => window.print()}>
+      </React.Fragment>
+      <p role="button" className="download" onClick={() => window.print()}>
         Télécharger le cv
       </p>
     </SimpleReactLightbox>
-  )
+  );
+};
 
-}
-
-export default Post
+export default Post;
 
 export const pageQuery = graphql`
-query GET_POST($id: ID!) {
-  wpgraphql {
-    post(id: $id) {
-      title
-      content
-      uri
-      acf {
-        bannertext
-        bannerpicture {
-          sourceUrl
+  query GET_POST($id: ID!) {
+    wpgraphql {
+      post(id: $id) {
+        title
+        content
+        uri
+        acf {
+          bannertext
+          bannerpicture {
+            sourceUrl
+          }
+          video
         }
       }
     }
   }
-}
-`
+`;

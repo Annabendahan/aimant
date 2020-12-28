@@ -1,15 +1,15 @@
-const createPosts = require(`./gatsby/createPosts`)
-const createPages = require(`./gatsby/createPages`)
-const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
+const createPosts = require(`./gatsby/createPosts`);
+const createPages = require(`./gatsby/createPages`);
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
 
 exports.createPages = async ({ actions, graphql }) => {
   const pluginOptions = {
     wordPressUrl: `https://cms.aimant.art/`,
     uploadsUrl: `https://cms.aimant.art/wp-content/uploads/`,
-  }
-  await createPosts({ actions, graphql }, pluginOptions)
-  await createPages({ actions, graphql }, pluginOptions)
-}
+  };
+  await createPosts({ actions, graphql }, pluginOptions);
+  await createPages({ actions, graphql }, pluginOptions);
+};
 
 exports.createResolvers = async ({
   actions,
@@ -19,17 +19,17 @@ exports.createResolvers = async ({
   store,
   reporter,
 }) => {
-  const { createNode } = actions
+  const { createNode } = actions;
 
   await createResolvers({
     WPGraphQL_MediaItem: {
       imageFile: {
-        type: "File",
+        type: 'File',
         async resolve(source) {
-          let sourceUrl = source.sourceUrl
+          let sourceUrl = source.sourceUrl;
 
           if (source.mediaItemUrl !== undefined) {
-            sourceUrl = source.mediaItemUrl
+            sourceUrl = source.mediaItemUrl;
           }
 
           return await createRemoteFileNode({
@@ -39,9 +39,9 @@ exports.createResolvers = async ({
             createNode,
             createNodeId,
             reporter,
-          })
+          });
         },
       },
     },
-  })
-}
+  });
+};

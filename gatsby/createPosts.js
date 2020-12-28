@@ -1,4 +1,4 @@
-const path = require(`path`)
+const path = require(`path`);
 module.exports = async ({ actions, graphql }, pluginOptions) => {
   const GET_POSTS = `
   query GET_POSTS($first:Int $after:String){
@@ -20,14 +20,13 @@ module.exports = async ({ actions, graphql }, pluginOptions) => {
       }
     }
   }
-  `
-  const { createPage } = actions
-  const allPosts = []
-  const blogPages = []
-  let pageNumber = 0
-  const fetchPosts = async variables =>
+  `;
+  const { createPage } = actions;
+  const allPosts = [];
+  const blogPages = [];
+  let pageNumber = 0;
+  const fetchPosts = async (variables) =>
     await graphql(GET_POSTS, variables).then(({ data }) => {
-
       const {
         wpgraphql: {
           posts: {
@@ -35,11 +34,11 @@ module.exports = async ({ actions, graphql }, pluginOptions) => {
             pageInfo: { hasNextPage, endCursor },
           },
         },
-      } = data
+      } = data;
 
-      const nodeIds = nodes.map(node => node.postId)
-      const blogTemplate = path.resolve(`./src/templates/blog.js`)
-      const blogPagePath = !variables.after ? `/` : `/page/${pageNumber}`
+      const nodeIds = nodes.map((node) => node.postId);
+      const blogTemplate = path.resolve(`./src/templates/blog.js`);
+      const blogPagePath = !variables.after ? `/` : `/page/${pageNumber}`;
 
       blogPages[pageNumber] = {
         path: blogPagePath,
@@ -50,27 +49,25 @@ module.exports = async ({ actions, graphql }, pluginOptions) => {
           hasNextPage: hasNextPage,
         },
         ids: nodeIds,
-      }
-      nodes.map(post => {
-        allPosts.push(post)
-      })
+      };
+      nodes.map((post) => {
+        allPosts.push(post);
+      });
       if (hasNextPage) {
-        pageNumber++
-        return fetchPosts({ first: 12, after: endCursor })
+        pageNumber++;
+        return fetchPosts({ first: 12, after: endCursor });
       }
-      return allPosts
-    })
+      return allPosts;
+    });
 
-  await fetchPosts({ first: 12, after: null }).then(allPosts => {
-    const postTemplate = path.resolve(`./src/templates/post.js`)
+  await fetchPosts({ first: 12, after: null }).then((allPosts) => {
+    const postTemplate = path.resolve(`./src/templates/post.js`);
 
-    blogPages.map(blogPage => {
+    blogPages.map((blogPage) => {
+      createPage(blogPage);
+    });
 
-      createPage(blogPage)
-    })
-
-    allPosts.map(post => {
-
+    allPosts.map((post) => {
       createPage({
         path: `/profiles${post.uri}`,
         component: postTemplate,
@@ -78,7 +75,7 @@ module.exports = async ({ actions, graphql }, pluginOptions) => {
           pluginOptions,
           ...post,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};

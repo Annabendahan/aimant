@@ -3,7 +3,10 @@ import { graphql, navigate } from 'gatsby';
 import Layout from '../components/layout';
 import logo from '../images/aimant_logo.png';
 import { Link } from 'gatsby';
-import pierre from '../images/pierre_guenard-003.png';
+import Comediennes from '../components/comediennes';
+import Comediens from '../components/comediens';
+import Mes from '../components/mes';
+import Auteurs from '../components/auteurs';
 
 import SEO from '../components/seo';
 
@@ -18,24 +21,23 @@ class IndexPage extends Component {
 
   render() {
     const data = this.props.data;
-
     const cat1 = data.wpgraphql.categories.edges[2].node.name; // Auteurs et réalisateurs
     const cat2 = data.wpgraphql.categories.edges[3].node.name; // Comédiennes
-    const cat3 = data.wpgraphql.categories.edges[4].node.name; // Comédiens    ggg
+    const cat3 = data.wpgraphql.categories.edges[4].node.name; // Comédiens
     const cat4 = data.wpgraphql.categories.edges[8].node.name; // Metteurs en scène
 
-    const comediennes = data.wpgraphql.posts.nodes.filter(
-      (p) => parseInt(p.categories.edges[0].node.categoryId, 10) === 2,
-    );
-    const comediens = data.wpgraphql.posts.nodes.filter(
-      (p) => parseInt(p.categories.edges[0].node.categoryId, 10) === 3,
-    );
-    const auteurs = data.wpgraphql.posts.nodes.filter(
-      (p) => parseInt(p.categories.edges[0].node.categoryId, 10) === 4,
-    );
-    const metteurs = data.wpgraphql.posts.nodes.filter(
-      (p) => parseInt(p.categories.edges[0].node.categoryId, 10) === 5,
-    );
+    // const comediennes = data.wpgraphql.posts.nodes.filter(
+    //   (p) => parseInt(p.categories.edges[0].node.categoryId, 10) === 2,
+    // );
+    // const comediens = data.wpgraphql.posts.nodes.filter(
+    //   (p) => parseInt(p.categories.edges[0].node.categoryId, 10) === 3,
+    // );
+    // const auteurs = data.wpgraphql.posts.nodes.filter(
+    //   (p) => parseInt(p.categories.edges[0].node.categoryId, 10) === 4,
+    // );
+    // const metteurs = data.wpgraphql.posts.nodes.filter(
+    //   (p) => parseInt(p.categories.edges[0].node.categoryId, 10) === 5,
+    // );
     const apropos = data.wpgraphql.posts.nodes.filter(
       (p) => parseInt(p.categories.edges[0].node.categoryId, 10) === 6,
     );
@@ -72,7 +74,6 @@ class IndexPage extends Component {
         <div className="home__menu">
           <div className="home__tabs">
             <h4 onClick={() => this.scrollTo('comediennes')}>{cat2}</h4>
-
             <h4 onClick={() => this.scrollTo('comediens')}>{cat3}</h4>
             <h4 onClick={() => this.scrollTo('auteurs')}>{cat1}</h4>
             <h4 onClick={() => this.scrollTo('metteurs')}>{cat4}</h4>
@@ -82,19 +83,7 @@ class IndexPage extends Component {
         <div id="comediennes" className="section section__red">
           <div className="cards">
             <h2> {cat2} </h2>
-
-            <div className="grid-container">
-              {comediennes.map((c) => (
-                <Link key={c.uri} to={`profiles${c.uri}`}>
-                  <div className="grid-item">
-                    <div className="picture">
-                      {c.acf.mignature ? <img src={c.acf.mignature.sourceUrl} alt="photo" /> : ' '}
-                    </div>
-                    <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, '')}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <Comediennes />
           </div>
         </div>
 
@@ -102,18 +91,7 @@ class IndexPage extends Component {
           <div className="cards">
             <h2> {cat3}</h2>
 
-            <div className="grid-container">
-              {comediens.map((c) => (
-                <Link key={c.uri} to={`profiles${c.uri}`}>
-                  <div className="grid-item">
-                    <div className="picture">
-                      {c.acf.mignature ? <img src={c.acf.mignature.sourceUrl} alt="photo" /> : ' '}
-                    </div>
-                    <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, '')}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <Comediens />
           </div>
         </div>
 
@@ -121,18 +99,7 @@ class IndexPage extends Component {
           <div className="cards">
             <h2> {cat1}</h2>
 
-            <div className="grid-container">
-              {auteurs.map((c) => (
-                <Link key={c.uri} to={`profiles${c.uri}`}>
-                  <div className="grid-item">
-                    <div className="picture">
-                      {c.acf.mignature ? <img src={c.acf.mignature.sourceUrl} alt="photo" /> : ' '}
-                    </div>
-                    <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, '')}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <Auteurs />
           </div>
         </div>
 
@@ -140,52 +107,51 @@ class IndexPage extends Component {
           <div className="cards">
             <h2> {cat4}</h2>
 
-            <div className="grid-container">
-              {metteurs.map((c) => (
-                <Link key={c.uri} to={`profiles${c.uri}`}>
-                  <div className="grid-item">
-                    <div className="picture">
-                      {c.acf.mignature ? <img src={c.acf.mignature.sourceUrl} alt="photo" /> : ' '}
-                    </div>
-                    <p>{c.excerpt.replace(/<\/?[^>]*?>/gi, '')}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <Mes />
           </div>
         </div>
 
         <div id="contact" className="home__footer">
           {apropos.map((c) => (
-            <p className="apropos">{c.content.replace(/<\/?[^>]*?>/gi, '')}</p>
+            <p key={c.uri} className="apropos">
+              {c.content.replace(/<\/?[^>]*?>/gi, '')}
+            </p>
           ))}
 
           <img src={logo} alt="logo" />
 
           {nom.map((c) => (
-            <p className="apropos">{c.content.replace(/<\/?[^>]*?>/gi, '')}</p>
+            <p key={c.uri} className="apropos">
+              {c.content.replace(/<\/?[^>]*?>/gi, '')}
+            </p>
           ))}
 
           {mail.map((c) => (
-            <a href={`mailto:${c.content.replace(/<\/?[^>]*?>/gi, '')}`}>
+            <a key={c.uri} href={`mailto:${c.content.replace(/<\/?[^>]*?>/gi, '')}`}>
               <p className="infos">{c.content.replace(/<\/?[^>]*?>/gi, '')}</p>
             </a>
           ))}
 
           {adresse.map((c) => (
-            <p className="infos">{c.content.replace(/<\/?[^>]*?>/gi, '')}</p>
+            <p key={c.uri} className="infos">
+              {c.content.replace(/<\/?[^>]*?>/gi, '')}
+            </p>
           ))}
 
           {ville.map((c) => (
-            <p className="infos">{c.content.replace(/<\/?[^>]*?>/gi, '')}</p>
+            <p key={c.uri} className="infos">
+              {c.content.replace(/<\/?[^>]*?>/gi, '')}
+            </p>
           ))}
 
           {numero.map((c) => (
-            <p className="infos">{c.content.replace(/<\/?[^>]*?>/gi, '')}</p>
+            <p key={c.uri} className="infos">
+              {c.content.replace(/<\/?[^>]*?>/gi, '')}
+            </p>
           ))}
 
           {contact.map((c) => (
-            <a href={`mailto:${c.content.replace(/<\/?[^>]*?>/gi, '')}`}>
+            <a key={c.uri} href={`mailto:${c.content.replace(/<\/?[^>]*?>/gi, '')}`}>
               <p className="infos">{c.content.replace(/<\/?[^>]*?>/gi, '')}</p>
             </a>
           ))}

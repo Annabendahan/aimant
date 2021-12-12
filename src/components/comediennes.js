@@ -6,7 +6,7 @@ export default (props) => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       wpgraphql {
-        posts(first: 100, where: { categoryId: 2 }) {
+        posts(first: 100, where: { categoryId: 2, orderby: { field: TITLE, order: ASC } }) {
           nodes {
             id
             title
